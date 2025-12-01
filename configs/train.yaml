@@ -1,0 +1,41 @@
+# Training configuration for score-based generative models
+
+# Model configuration
+model:
+  in_channels: 3
+  base_channels: 64
+  num_layers: 4
+  time_embed_dim: 128
+  use_attention: true
+
+# Training configuration
+training:
+  num_epochs: 100
+  batch_size: 64
+  learning_rate: 0.0002
+  betas: [0.9, 0.999]
+  weight_decay: 0.0001
+  grad_clip: 1.0
+  sigma_min: 0.01
+  sigma_max: 1.0
+  eval_interval: 5
+  sample_interval: 10
+  num_workers: 4
+
+# Data configuration
+data:
+  image_size: 32
+  max_train_samples: null  # null for all samples
+  max_val_samples: 1000
+
+# Sampling configuration
+sampling:
+  sigma_min: 0.01
+  sigma_max: 1.0
+  num_steps: 1000
+  step_size: 0.00002
+
+# Logging configuration
+logging:
+  use_wandb: false
+  log_interval: 100
